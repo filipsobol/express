@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { json } from '../src/express.js';
 
 describe('req', () => {
   describe('.param(name, default)', () => {
@@ -33,7 +33,7 @@ describe('req', () => {
     it('should check req.body', () => new Promise(done => {
       var app = express();
 
-      app.use(express.json())
+      app.use(json())
 
       app.use((req, res) => {
         res.end(req.param('name'));

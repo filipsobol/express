@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import request from 'supertest';
 import merge from 'utils-merge';
 import cookieParser from 'cookie-parser';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('res', () => {
   describe('.cookie(name, object)', () => {

@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import assert from 'assert';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('app', () => {
   describe('.locals', () => {

@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('app.route', () => {
   it('should return a new route', () => new Promise(done => {

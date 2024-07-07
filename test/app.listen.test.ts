@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('app.listen()', () => {
   it('should wrap with an HTTP server', () => new Promise(done =>{

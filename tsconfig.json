@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     // https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
-    "module": "NodeNext",
+    "module": "Preserve",
     "target": "ES2022",
     "lib": ["ES2023"],
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "skipLibCheck": true,
     "isolatedModules": true,

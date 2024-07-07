@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import after from 'after';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('app.all()', () => {
   it('should add a router per method', () => new Promise(done => {

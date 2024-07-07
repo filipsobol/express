@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
 import assert from 'assert';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('HEAD', () => {
   it( 'should default to GET', () => new Promise(done => {

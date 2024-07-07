@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { Router } from '../src/express.js';
 
 describe('req', () => {
   describe('.baseUrl', () => {
@@ -18,7 +18,7 @@ describe('req', () => {
 
     it('should contain lower path', () => new Promise(done => {
       var app = express()
-      var sub = express.Router()
+      var sub = Router()
 
       sub.get('/:b', (req, res) => {
         res.end(req.baseUrl)
@@ -32,9 +32,9 @@ describe('req', () => {
 
     it('should contain full lower path', () => new Promise(done => {
       var app = express()
-      var sub1 = express.Router()
-      var sub2 = express.Router()
-      var sub3 = express.Router()
+      var sub1 = Router()
+      var sub2 = Router()
+      var sub3 = Router()
 
       sub3.get('/:d', (req, res) => {
         res.end(req.baseUrl)
@@ -51,9 +51,9 @@ describe('req', () => {
     it('should travel through routers correctly', () => new Promise(done => {
       var urls = []
       var app = express()
-      var sub1 = express.Router()
-      var sub2 = express.Router()
-      var sub3 = express.Router()
+      var sub1 = Router()
+      var sub2 = Router()
+      var sub3 = Router()
 
       sub3.get('/:d', (req, res, next) => {
         urls.push('0@' + req.baseUrl)

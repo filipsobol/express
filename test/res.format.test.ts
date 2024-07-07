@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import after from 'after';
 import request from 'supertest';
 import assert from 'assert';
-import express from '../src/express.cjs'
+import express, { Router } from '../src/express.js'
 
 var app1 = express();
 
@@ -152,7 +152,7 @@ describe('res', () => {
 
     describe('in router', () => {
       var app = express();
-      var router = express.Router();
+      var router = Router();
 
       router.get('/', (req, res) => {
         res.format({

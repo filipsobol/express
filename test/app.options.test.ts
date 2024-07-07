@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { Router } from '../src/express.js';
 
 const noop = () => {};
 
@@ -62,7 +62,7 @@ describe('OPTIONS', () => {
 
   it( 'should forward requests down the middleware chain', () => new Promise(done => {
     var app = express();
-    var router = new express.Router();
+    var router = new Router();
 
     router.get('/users', noop);
     app.use(router);
@@ -77,7 +77,7 @@ describe('OPTIONS', () => {
   describe('when error occurs in response handler', () => {
     it( 'should pass error to callback', () => new Promise(done => {
       var app = express();
-      var router = express.Router();
+      var router = Router();
 
       router.get('/users', noop);
 

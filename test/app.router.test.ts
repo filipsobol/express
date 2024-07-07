@@ -4,12 +4,12 @@ import request from 'supertest';
 import assert from 'assert';
 import methods from 'methods';
 import { shouldSkipQuery } from './support/utils';
-import express from '../src/express.cjs'
+import express, { Router } from '../src/express.js'
 
 describe('app.router', () => {
   it('should restore req.params after leaving router', () => new Promise(done => {
     var app = express();
-    var router = new express.Router();
+    var router = new Router();
 
     function handler1(req, res, next){
       res.setHeader('x-user-id', String(req.params.id));
@@ -268,7 +268,7 @@ describe('app.router', () => {
   describe('params', () => {
     it('should overwrite existing req.params by default', () => new Promise(done => {
       var app = express();
-      var router = new express.Router();
+      var router = new Router();
 
       router.get('/:action', (req, res) => {
         res.send(req.params);
@@ -283,7 +283,7 @@ describe('app.router', () => {
 
     it('should allow merging existing req.params', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/:action', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -299,7 +299,7 @@ describe('app.router', () => {
 
     it('should use params from router', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/:thing', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -315,7 +315,7 @@ describe('app.router', () => {
 
     it('should merge numeric indices req.params', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/*.*', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -331,7 +331,7 @@ describe('app.router', () => {
 
     it('should merge numeric indices req.params when more in parent', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/*', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -347,7 +347,7 @@ describe('app.router', () => {
 
     it('should merge numeric indices req.params when parent has same number', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/name:(\\w+)', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -363,7 +363,7 @@ describe('app.router', () => {
 
     it('should ignore invalid incoming req.params', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/:name', (req, res) => {
         var keys = Object.keys(req.params).sort();
@@ -382,7 +382,7 @@ describe('app.router', () => {
 
     it('should restore req.params', () => new Promise(done => {
       var app = express();
-      var router = new express.Router({ mergeParams: true });
+      var router = new Router({ mergeParams: true });
 
       router.get('/user:(\\w+)/*', (req, res, next) => {
         next();
@@ -960,7 +960,7 @@ describe('app.router', () => {
   describe('when next("router") is called', () => {
     it('should jump out of router', () => new Promise(done => {
       var app = express()
-      var router = express.Router()
+      var router = Router()
 
       function fn (req, res, next) {
         res.set('X-Hit', '1')

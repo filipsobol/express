@@ -3,7 +3,7 @@ import assert from 'assert'
 import asyncHooks from 'async_hooks';
 import { Buffer } from 'safe-buffer';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { raw } from '../src/express.js';
 
 var describeAsyncHooks = typeof asyncHooks.AsyncLocalStorage === 'function'
   ? describe
@@ -30,7 +30,7 @@ describe('express.raw()', () => {
       next()
     })
 
-    app.use(express.raw())
+    app.use(raw())
 
     app.post('/', (req, res) => {
       if (Buffer.isBuffer(req.body)) {
@@ -72,7 +72,7 @@ describe('express.raw()', () => {
       req.resume()
     })
 
-    app.use(express.raw())
+    app.use(raw())
 
     app.use((err, req, res, next) => {
       res.status(err.status || 500)
@@ -97,8 +97,8 @@ describe('express.raw()', () => {
   it('should handle duplicated middleware', () => new Promise(done => {
     var app = express()
 
-    app.use(express.raw())
-    app.use(express.raw())
+    app.use(raw())
+    app.use(raw())
 
     app.post('/', (req, res) => {
       if (Buffer.isBuffer(req.body)) {
@@ -367,7 +367,7 @@ describe('express.raw()', () => {
         req.asyncLocalStorage.run(store, next)
       })
 
-      app.use(express.raw())
+      app.use(raw())
 
       app.use((req, res, next) => {
         var local = req.asyncLocalStorage.getStore()
@@ -525,7 +525,7 @@ describe('express.raw()', () => {
 function createApp (options) {
   var app = express()
 
-  app.use(express.raw(options))
+  app.use(raw(options))
 
   app.use((err, req, res, next) => {
     res.status(err.status || 500)

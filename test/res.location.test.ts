@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import assert from 'assert';
 import url from 'url';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('res', () => {
   describe('.location(url)', () => {

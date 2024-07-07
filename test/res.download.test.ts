@@ -6,7 +6,7 @@ import { Buffer } from 'safe-buffer';
 import path from 'path';
 import request from 'supertest';
 import { shouldNotHaveHeader, shouldHaveBody } from './support/utils';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 var FIXTURES_PATH = path.join(__dirname, 'fixtures')
 
@@ -18,7 +18,7 @@ describe('res', () => {
       app.use((req, res) => {
         res.download('test/fixtures/user.html');
       });
-
+ 
       request(app)
       .get('/')
       .expect('Content-Type', 'text/html; charset=UTF-8')

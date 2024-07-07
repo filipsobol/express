@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from 'vitest';
 import assert from 'assert';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('app', () => {
   it('should inherit from event emitter', () => new Promise((done) =>{

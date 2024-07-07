@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import assert from 'assert';
 import request from 'supertest';
 import { shouldNotHaveHeader } from './support/utils';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('res', () => {
   describe('.jsonp(object)', () => {

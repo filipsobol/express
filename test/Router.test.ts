@@ -2,9 +2,7 @@ import { describe, it } from 'vitest';
 import after from 'after';
 import methods from 'methods';
 import assert from 'assert';
-import express from '../src/express.cjs'
-
-const Router = express.Router
+import { Router } from '../src/express.js'
 
 describe('Router', () => {
   it('should return a function with router methods', () => {

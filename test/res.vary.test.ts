@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
 import { shouldNotHaveHeader } from './support/utils';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('res.vary()', () => {
   describe('with no arguments', () => {

@@ -1,6 +1,6 @@
 import { describe, beforeEach, it } from 'vitest';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('req', () => {
   describe('.xhr', () => {

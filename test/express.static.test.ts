@@ -4,25 +4,25 @@ import { Buffer } from 'safe-buffer';
 import path from 'path';
 import request from 'supertest';
 import { shouldNotHaveHeader, shouldNotHaveBody, shouldHaveBody } from './support/utils';
-import express from '../src/express.cjs';
+import express, { serveStatic } from '../src/express.js';
 
 var fixtures = path.join(__dirname, '/fixtures')
 var relative = path.relative(process.cwd(), fixtures)
 
 var skipRelative = ~relative.indexOf('..') || path.resolve(relative) === relative
 
-describe('express.static()', () => {
+describe('serveStatic()', () => {
   describe('basic operations', () => {
     beforeEach(() => {
       this.app = createApp()
     })
 
     it('should require root path', () => {
-      assert.throws(express.static.bind(), /root path required/)
+      assert.throws(serveStatic.bind(), /root path required/)
     })
 
     it('should require root path to be string', () => {
-      assert.throws(express.static.bind(null, 42), /root path.*string/)
+      assert.throws(serveStatic.bind(null, 42), /root path.*string/)
     })
 
     it('should serve static files', () => new Promise(done => {
@@ -276,7 +276,7 @@ describe('express.static()', () => {
         var app = express()
         var root = fixtures + Array(10000).join('/foobar')
 
-        app.use(express.static(root, { 'fallthrough': true }))
+        app.use(serveStatic(root, { 'fallthrough': true }))
         app.use((req, res, next) => {
           res.sendStatus(404)
         })
@@ -351,7 +351,7 @@ describe('express.static()', () => {
         var app = express()
         var root = fixtures + Array(10000).join('/foobar')
 
-        app.use(express.static(root, { 'fallthrough': false }))
+        app.use(serveStatic(root, { 'fallthrough': false }))
         app.use((req, res, next) => {
           res.sendStatus(404)
         })
@@ -471,7 +471,7 @@ describe('express.static()', () => {
           req.originalUrl.replace(/\/snow(\/|$)/, '/snow \u2603$1')
         next()
       })
-      this.app.use(express.static(fixtures))
+      this.app.use(serveStatic(fixtures))
     })
 
     it('should redirect directories', () => new Promise(done => {
@@ -539,13 +539,13 @@ describe('express.static()', () => {
   describe('setHeaders', () => {
     beforeEach(() => {
       this.app = express()
-      this.app.use(express.static(fixtures, { 'setHeaders': (res) => {
+      this.app.use(serveStatic(fixtures, { 'setHeaders': (res) => {
         res.setHeader('x-custom', 'set')
       } }))
     })
 
     it('should reject non-functions', () => {
-      assert.throws(express.static.bind(null, fixtures, { 'setHeaders': 3 }), /setHeaders.*function/)
+      assert.throws(serveStatic.bind(null, fixtures, { 'setHeaders': 3 }), /setHeaders.*function/)
     })
 
     it('should get called when sending file', () => new Promise(done => {
@@ -690,7 +690,7 @@ describe('express.static()', () => {
   describe('when index at mount point', () => {
     beforeEach(() => {
       this.app = express()
-      this.app.use('/users', express.static(fixtures + '/users'))
+      this.app.use('/users', serveStatic(fixtures + '/users'))
     })
 
     it('should redirect correctly', () => new Promise(done => {
@@ -704,7 +704,7 @@ describe('express.static()', () => {
   describe('when mounted', () => {
     beforeEach(() => {
       this.app = express()
-      this.app.use('/static', express.static(fixtures))
+      this.app.use('/static', serveStatic(fixtures))
     })
 
     it('should redirect relative to the originalUrl', () => new Promise(done => {
@@ -730,7 +730,7 @@ describe('express.static()', () => {
   describe('when mounted "root" as a file', () => {
     beforeEach(() => {
       this.app = express()
-      this.app.use('/todo.txt', express.static(fixtures + '/todo.txt'))
+      this.app.use('/todo.txt', serveStatic(fixtures + '/todo.txt'))
     })
 
     it('should load the file when on trailing slash', () => new Promise(done => {
@@ -754,7 +754,7 @@ describe('express.static()', () => {
         res.status(501)
         next()
       })
-      app.use(express.static(fixtures))
+      app.use(serveStatic(fixtures))
 
       request(app)
         .get('/todo.txt')
@@ -765,7 +765,7 @@ describe('express.static()', () => {
   describe('when index file serving disabled', () => {
     beforeEach(() => {
       this.app = express()
-      this.app.use('/static', express.static(fixtures, { 'index': false }))
+      this.app.use('/static', serveStatic(fixtures, { 'index': false }))
       this.app.use((req, res, next) => {
         res.sendStatus(404)
       })
@@ -803,7 +803,7 @@ function createApp (dir, options, fn) {
   var app = express()
   var root = dir || fixtures
 
-  app.use(express.static(root, options))
+  app.use(serveStatic(root, options))
 
   app.use((req, res, next) => {
     res.sendStatus(404)

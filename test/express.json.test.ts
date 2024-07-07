@@ -3,7 +3,7 @@ import assert from 'assert';
 import asyncHooks from 'async_hooks';
 import { Buffer } from 'safe-buffer';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { json } from '../src/express.js';
 
 var describeAsyncHooks = typeof asyncHooks.AsyncLocalStorage === 'function'
   ? describe
@@ -58,7 +58,7 @@ describe('express.json()', () => {
       next()
     })
 
-    app.use(express.json())
+    app.use(json())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -79,7 +79,7 @@ describe('express.json()', () => {
       req.resume()
     })
 
-    app.use(express.json())
+    app.use(json())
 
     app.use((err, req, res, next) => {
       res.status(err.status || 500)
@@ -100,8 +100,8 @@ describe('express.json()', () => {
   it('should handle duplicated middleware', () => new Promise(done => {
     var app = express()
 
-    app.use(express.json())
-    app.use(express.json())
+    app.use(json())
+    app.use(json())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -537,7 +537,7 @@ describe('express.json()', () => {
         req.asyncLocalStorage.run(store, next)
       })
 
-      app.use(express.json())
+      app.use(json())
 
       app.use((req, res, next) => {
         var local = req.asyncLocalStorage.getStore()
@@ -749,7 +749,7 @@ describe('express.json()', () => {
 function createApp (options) {
   var app = express()
 
-  app.use(express.json(options))
+  app.use(json(options))
 
   app.use((err, req, res, next) => {
     res.status(err.status || 500)

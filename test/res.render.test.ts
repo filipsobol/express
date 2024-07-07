@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import path from 'path'
 import request from 'supertest';
 import tmpl from './support/tmpl';
-import express from '../src/express.cjs';
+import express from '../src/express.js';
 
 describe('res', () => {
   describe('.render(name)', () => {

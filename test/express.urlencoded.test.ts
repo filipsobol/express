@@ -3,13 +3,13 @@ import assert from 'assert';
 import asyncHooks from 'async_hooks';
 import { Buffer } from 'safe-buffer';
 import request from 'supertest';
-import express from '../src/express.cjs';
+import express, { urlencoded } from '../src/express.js';
 
 var describeAsyncHooks = typeof asyncHooks.AsyncLocalStorage === 'function'
   ? describe
   : describe.skip
 
-describe('express.urlencoded()', () => {
+describe('urlencoded()', () => {
   beforeEach(() => {
     this.app = createApp()
   })
@@ -30,7 +30,7 @@ describe('express.urlencoded()', () => {
       next()
     })
 
-    app.use(express.urlencoded())
+    app.use(urlencoded())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -69,7 +69,7 @@ describe('express.urlencoded()', () => {
       req.resume()
     })
 
-    app.use(express.urlencoded())
+    app.use(urlencoded())
 
     app.use((err, req, res, next) => {
       res.status(err.status || 500)
@@ -90,8 +90,8 @@ describe('express.urlencoded()', () => {
   it('should handle duplicated middleware', () => new Promise(done => {
     var app = express()
 
-    app.use(express.urlencoded())
-    app.use(express.urlencoded())
+    app.use(urlencoded())
+    app.use(urlencoded())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -641,7 +641,7 @@ describe('express.urlencoded()', () => {
         req.asyncLocalStorage.run(store, next)
       })
 
-      app.use(express.urlencoded())
+      app.use(urlencoded())
 
       app.use((req, res, next) => {
         var local = req.asyncLocalStorage.getStore()
@@ -834,7 +834,7 @@ function createManyParams (count) {
 function createApp (options) {
   var app = express()
 
-  app.use(express.urlencoded(options))
+  app.use(urlencoded(options))
 
   app.use((err, req, res, next) => {
     res.status(err.status || 500)

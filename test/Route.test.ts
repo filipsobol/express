@@ -2,9 +2,7 @@ import { describe, it } from 'vitest';
 import after from 'after';
 import assert from 'assert';
 import methods from 'methods';
-import express from '../src/express.cjs'
-
-const Route = express.Route;
+import { Route } from '../src/express.js'
 
 describe('Route', () => {
   it('should work without handlers', () => new Promise(done => {

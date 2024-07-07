@@ -3,13 +3,13 @@ import assert from 'assert'
 import asyncHooks from 'async_hooks';
 import { Buffer } from 'safe-buffer';
 import request from 'supertest';
-import express from '../src/express.cjs'
+import express, { text } from '../src/express.js'
 
 var describeAsyncHooks = typeof asyncHooks.AsyncLocalStorage === 'function'
   ? describe
   : describe.skip
 
-describe('express.text()', () => {
+describe('text()', () => {
   beforeEach(() => {
     this.app = createApp()
   })
@@ -30,7 +30,7 @@ describe('express.text()', () => {
       next()
     })
 
-    app.use(express.text())
+    app.use(text())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -68,7 +68,7 @@ describe('express.text()', () => {
       req.resume()
     })
 
-    app.use(express.text())
+    app.use(text())
 
     app.use((err, req, res, next) => {
       res.status(err.status || 500)
@@ -89,8 +89,8 @@ describe('express.text()', () => {
   it('should handle duplicated middleware', () => new Promise(done => {
     var app = express()
 
-    app.use(express.text())
-    app.use(express.text())
+    app.use(text())
+    app.use(text())
 
     app.post('/', (req, res) => {
       res.json(req.body)
@@ -396,7 +396,7 @@ describe('express.text()', () => {
         req.asyncLocalStorage.run(store, next)
       })
 
-      app.use(express.text())
+      app.use(text())
 
       app.use((req, res, next) => {
         var local = req.asyncLocalStorage.getStore()
@@ -579,7 +579,7 @@ describe('express.text()', () => {
 function createApp (options) {
   var app = express()
 
-  app.use(express.text(options))
+  app.use(text(options))
 
   app.use((err, req, res, next) => {
     res.status(err.status || 500)

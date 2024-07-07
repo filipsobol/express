@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import assert from 'assert';
 import request from 'supertest';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('req', () => {
   describe('.query', () => {

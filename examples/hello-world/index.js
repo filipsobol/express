@@ -1,4 +1,4 @@
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 
 var app = module.exports = express()
 

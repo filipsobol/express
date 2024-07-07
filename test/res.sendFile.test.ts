@@ -7,7 +7,7 @@ import assert from 'assert';
 import onFinished from 'on-finished';
 import path from 'path';
 import { shouldNotHaveHeader, shouldHaveBody, shouldHaveHeader } from './support/utils';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 var fixtures = path.join(__dirname, 'fixtures');
 

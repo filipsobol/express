@@ -1,4 +1,4 @@
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import apiV1 from './controllers/api_v1';
 import apiV2 from './controllers/api_v2';
 

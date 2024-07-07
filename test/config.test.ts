@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import assert from 'assert';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('config', () => {
   describe('.set()', () => {

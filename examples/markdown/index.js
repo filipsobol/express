@@ -1,5 +1,5 @@
 import escapeHtml from 'escape-html';
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import fs from 'fs';
 import marked from 'marked';
 import path from 'path';

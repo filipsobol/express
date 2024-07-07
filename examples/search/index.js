@@ -5,7 +5,7 @@
 // $ npm install redis
 // $ redis-server
 
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import path from 'path';
 import redis from 'redis';
 

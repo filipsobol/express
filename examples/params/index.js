@@ -1,5 +1,5 @@
 import createError from 'http-errors'
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 const app = express();
 
 export default app;

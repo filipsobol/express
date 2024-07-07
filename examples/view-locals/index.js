@@ -1,4 +1,4 @@
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import path from 'path';
 import User from './user';
 var app = express();

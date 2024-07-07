@@ -1,6 +1,6 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('app.del()', () => {
   it( 'should alias app.delete()', () => new Promise(done => {

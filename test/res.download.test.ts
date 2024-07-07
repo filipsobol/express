@@ -6,7 +6,7 @@ import { Buffer } from 'safe-buffer';
 import path from 'path';
 import request from 'supertest';
 import { shouldNotHaveHeader, shouldHaveBody } from './support/utils';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 var FIXTURES_PATH = path.join(__dirname, 'fixtures')
 

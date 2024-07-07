@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import request from 'supertest';
 import cookieParser from 'cookie-parser';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('req', () => {
   describe('.signedCookies', () => {

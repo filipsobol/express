@@ -6,7 +6,7 @@ import methods from 'methods';
 import request from 'supertest';
 import { shouldNotHaveHeader, shouldHaveBody, shouldNotHaveBody } from './support/utils';
 import { shouldSkipQuery } from './support/utils';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('res', () => {
   describe('.send()', () => {

@@ -1,5 +1,5 @@
 import escapeHtml from 'escape-html'
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 
 var verbose = process.env.NODE_ENV !== 'test'
 

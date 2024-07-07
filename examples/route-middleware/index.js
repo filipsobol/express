@@ -1,4 +1,4 @@
-import express from '../../lib/express';
+import express from '../../src/express';
 
 var app = express();
 

@@ -4,7 +4,7 @@ import request from 'supertest';
 import assert from 'assert';
 import methods from 'methods';
 import { shouldSkipQuery } from './support/utils';
-import express from '../index.cjs'
+import express from '../src/express.cjs'
 
 describe('app.router', () => {
   it('should restore req.params after leaving router', () => new Promise(done => {

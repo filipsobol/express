@@ -5,7 +5,7 @@
 // $ npm install redis online
 // $ redis-server
 
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import online from 'online';
 import redis from 'redis';
 var db = redis.createClient();

@@ -1,5 +1,5 @@
 import path from 'path';
-import express from '../../../index.cjs';
+import express from '../../../src/express.cjs';
 
 import * as mainController from '../controllers/main/index.js';
 import * as petController from '../controllers/pet/index.js';

@@ -4,7 +4,7 @@ import { Buffer } from 'safe-buffer';
 import path from 'path';
 import request from 'supertest';
 import { shouldNotHaveHeader, shouldNotHaveBody, shouldHaveBody } from './support/utils';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 var fixtures = path.join(__dirname, '/fixtures')
 var relative = path.relative(process.cwd(), fixtures)

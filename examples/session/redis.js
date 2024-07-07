@@ -2,7 +2,7 @@
 import logger from 'morgan';
 import session from  'express-session' ;
 import RedisStore from 'connect-redis';
-import express from  '../../index.cjs' ;
+import express from  '../../src/express.cjs' ;
 
 var app = express();
 

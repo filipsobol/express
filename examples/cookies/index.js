@@ -1,6 +1,6 @@
 import logger from 'morgan';
 import cookieParser from 'cookie-parser' ;
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 
 const app = express();
 

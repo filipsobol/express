@@ -1,4 +1,4 @@
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import pbkdf2 from'pbkdf2-password';
 import path from 'path';
 import session from 'express-session';

@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import assert from 'assert';
 import fs from 'fs';
 import path from 'path';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 function render(path, options, fn) {
   fs.readFile(path, 'utf8', (err, str) => {

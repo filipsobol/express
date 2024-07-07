@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import assert from 'assert';
 import { Buffer } from 'safe-buffer';
-import utils from '../lib/utils.cjs';
+import utils from '../src/utils.cjs';
 
 describe('utils.etag(body, encoding)', () => {
   it('should support strings', () => {

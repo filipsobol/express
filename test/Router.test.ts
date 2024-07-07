@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import after from 'after';
 import methods from 'methods';
 import assert from 'assert';
-import express from '../index.cjs'
+import express from '../src/express.cjs'
 
 const Router = express.Router
 

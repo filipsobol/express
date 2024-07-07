@@ -2,7 +2,7 @@ import { describe, it } from 'vitest';
 import after from 'after';
 import assert from 'assert'
 import request from 'supertest';
-import express from '../index.cjs';
+import express from '../src/express.cjs';
 
 describe('app', () => {
   it('should emit "mount" when mounted', () => new Promise(done => {

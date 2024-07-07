@@ -3,7 +3,7 @@ import assert from 'assert'
 import asyncHooks from 'async_hooks';
 import { Buffer } from 'safe-buffer';
 import request from 'supertest';
-import express from '../index.cjs'
+import express from '../src/express.cjs'
 
 var describeAsyncHooks = typeof asyncHooks.AsyncLocalStorage === 'function'
   ? describe

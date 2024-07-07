@@ -1,4 +1,4 @@
-import express from '../../index.cjs';
+import express from '../../src/express.cjs';
 import GithubView from './github-view';
 import md from 'marked'.parse;
 

@@ -1,16 +1,13 @@
-'use strict'
+import express from '../../index.cjs';
+import logger from 'morgan';
+import path from 'path';
+import session from 'express-session';
+import methodOverride from 'method-override';
+import boot from './lib/boot';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../..');
-var logger = require('morgan');
-var path = require('path');
-var session = require('express-session');
-var methodOverride = require('method-override');
-
-var app = module.exports = express();
+export default app;
 
 // set our default template engine to "ejs"
 // which prevents the need for using file extensions
@@ -73,11 +70,13 @@ app.use(function(req, res, next){
 });
 
 // load controllers
-require('./lib/boot')(app, { verbose: !module.parent });
+// TODO: ????
+// boot(app, { verbose: !module.parent });
+boot(app, { verbose: false });
 
 app.use(function(err, req, res, next){
-  // log it
-  if (!module.parent) console.error(err.stack);
+  // TODO: ???
+  // if (!module.parent) console.error(err.stack);
 
   // error page
   res.status(500).render('5xx');
@@ -88,8 +87,8 @@ app.use(function(req, res, next){
   res.status(404).render('404', { url: req.originalUrl });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

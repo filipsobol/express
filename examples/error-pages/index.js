@@ -1,13 +1,9 @@
-'use strict'
+import express from '../../index.cjs';
+import path from 'path';
+const app = express();
 
-/**
- * Module dependencies.
- */
-
-var express = require('../../');
-var path = require('path');
-var app = module.exports = express();
-var logger = require('morgan');
+export default app;
+import logger from 'morgan';
 var silent = process.env.NODE_ENV === 'test'
 
 // general config
@@ -96,8 +92,8 @@ app.use(function(err, req, res, next){
   res.render('500', { error: err });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

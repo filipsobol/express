@@ -1,12 +1,6 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var express = require('../..');
-var path = require('path');
-var User = require('./user');
+import express from '../../index.cjs';
+import path from 'path';
+import User from './user';
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -148,8 +142,8 @@ app.all('/api/*', function(req, res, next){
 
 */
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

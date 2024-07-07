@@ -1,18 +1,12 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var express = require('../..');
-var path = require('path');
+import express from '../../index.cjs';
+import path from 'path';
 var app = express();
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var methodOverride = require('method-override');
-var site = require('./site');
-var post = require('./post');
-var user = require('./user');
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+import methodOverride from 'method-override';
+import site from './site';
+import post from './post';
+import user from './user';
 
 module.exports = app;
 
@@ -48,8 +42,8 @@ app.put('/user/:id/edit', user.update);
 
 app.get('/posts', post.list);
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

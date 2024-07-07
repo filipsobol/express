@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // https://github.com/microsoft/TypeScript/wiki/Node-Target-Mapping
+    "module": "NodeNext",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "moduleResolution": "NodeNext",
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "allowJs": true,
+
+    "useDefineForClassFields": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "dist"
+  },
+  "include": ["src"]
+}

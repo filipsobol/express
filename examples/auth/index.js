@@ -1,15 +1,13 @@
-'use strict'
+import express from '../../index.cjs';
+import pbkdf2 from'pbkdf2-password';
+import path from 'path';
+import session from 'express-session';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../..');
-var hash = require('pbkdf2-password')()
-var path = require('path');
-var session = require('express-session');
+export default app;
 
-var app = module.exports = express();
+const hash = pbkdf2();
 
 // config
 
@@ -126,8 +124,8 @@ app.post('/login', function (req, res, next) {
   });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

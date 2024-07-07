@@ -1,12 +1,8 @@
-'use strict'
+import express from '../../index.cjs';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../../');
-
-var app = module.exports = express();
+export default app;
 
 // Ad-hoc example resource method
 
@@ -88,8 +84,8 @@ app.get('/', function(req, res){
   ].join('\n'));
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

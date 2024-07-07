@@ -1,35 +1,38 @@
-'use strict'
+import path from 'path';
+import express from '../../../index.cjs';
 
-/**
- * Module dependencies.
- */
+import * as mainController from '../controllers/main/index.js';
+import * as petController from '../controllers/pet/index.js';
+import * as userController from '../controllers/user/index.js';
+import * as userPetController from '../controllers/user-pet/index.js';
 
-var express = require('../../..');
-var fs = require('fs');
-var path = require('path');
+const controllers = [
+  [ mainController, 'main' ],
+  [ petController, 'pet' ],
+  [ userController, 'user' ],
+  [ userPetController, 'user-pet' ],
+];
 
-module.exports = function(parent, options){
-  var dir = path.join(__dirname, '..', 'controllers');
+export default function(parent, options){
   var verbose = options.verbose;
-  fs.readdirSync(dir).forEach(function(name){
-    var file = path.join(dir, name)
-    if (!fs.statSync(file).isDirectory()) return;
-    verbose && console.log('\n   %s:', name);
-    var obj = require(file);
-    var name = obj.name || name;
-    var prefix = obj.prefix || '';
+
+  controllers.forEach(([ controller, name ]) => {
+    verbose && console.log( '\n   %s:', name );
+
+    var name = controller.name || name;
+    var prefix = controller.prefix || '';
     var app = express();
     var handler;
     var method;
     var url;
 
     // allow specifying the view engine
-    if (obj.engine) app.set('view engine', obj.engine);
+    if (controller.engine) app.set('view engine', controller.engine);
     app.set('views', path.join(__dirname, '..', 'controllers', name, 'views'));
 
     // generate routes based
     // on the exported methods
-    for (var key in obj) {
+    for (var key in controller) {
       // "reserved" exports
       if (~['name', 'prefix', 'engine', 'before'].indexOf(key)) continue;
       // route exports
@@ -64,12 +67,12 @@ module.exports = function(parent, options){
       }
 
       // setup
-      handler = obj[key];
+      handler = controller[key];
       url = prefix + url;
 
       // before middleware support
-      if (obj.before) {
-        app[method](url, obj.before, handler);
+      if (controller.before) {
+        app[method](url, controller.before, handler);
         verbose && console.log('     %s %s -> before -> %s', method.toUpperCase(), url, key);
       } else {
         app[method](url, handler);

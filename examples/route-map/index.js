@@ -1,15 +1,11 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var escapeHtml = require('escape-html')
-var express = require('../../lib/express');
+import escapeHtml from 'escape-html'
+import express from '../../index.cjs';
 
 var verbose = process.env.NODE_ENV !== 'test'
 
-var app = module.exports = express();
+const app = express();
+
+export default app;
 
 app.map = function(a, route){
   route = route || '';
@@ -68,8 +64,8 @@ app.map({
   }
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

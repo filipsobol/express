@@ -1,5 +1,3 @@
-'use strict'
-
 // install redis first:
 // https://redis.io/
 
@@ -7,8 +5,8 @@
 // $ npm install redis
 // $ redis-server
 
-var express = require('../..');
-var session = require('express-session');
+import express from '../../index.cjs';
+import session from 'express-session';
 
 var app = express();
 
@@ -30,8 +28,8 @@ app.get('/', function(req, res){
   res.send(body + '<p>viewed <strong>' + req.session.views + '</strong> times.</p>');
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

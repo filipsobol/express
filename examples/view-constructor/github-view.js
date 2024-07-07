@@ -1,11 +1,5 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var https = require('https');
-var path = require('path');
+import https from 'https';
+import path from 'path';
 var extname = path.extname;
 
 /**

@@ -1,12 +1,8 @@
-'use strict'
+import express from '../../index.cjs';
+import logger from 'morgan';
+const app = express();
 
-/**
- * Module dependencies.
- */
-
-var express = require('../../');
-var logger = require('morgan');
-var app = module.exports = express();
+export default app;
 var test = app.get('env') === 'test'
 
 if (!test) app.use(logger('dev'));
@@ -46,8 +42,8 @@ app.get('/next', function(req, res, next){
 // from app.get() etc
 app.use(error);
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

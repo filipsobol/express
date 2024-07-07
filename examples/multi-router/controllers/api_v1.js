@@ -1,6 +1,4 @@
-'use strict'
-
-var express = require('../../..');
+import express from '../../../index.cjs';
 
 var apiv1 = express.Router();
 

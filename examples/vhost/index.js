@@ -1,12 +1,6 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var express = require('../..');
-var logger = require('morgan');
-var vhost = require('vhost');
+import express from '../../index.cjs';
+import logger from 'morgan';
+import vhost from 'vhost';
 
 /*
 edit /etc/hosts:
@@ -41,13 +35,15 @@ redirect.use(function(req, res){
 
 // Vhost app
 
-var app = module.exports = express();
+const app = express();
+
+export default app;
 
 app.use(vhost('*.example.com', redirect)); // Serves all subdomains via Redirect app
 app.use(vhost('example.com', main)); // Serves top level domain via Main server app
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

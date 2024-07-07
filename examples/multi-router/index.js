@@ -1,18 +1,20 @@
-'use strict'
+import express from '../../index.cjs';
+import apiV1 from './controllers/api_v1';
+import apiV2 from './controllers/api_v2';
 
-var express = require('../..');
+const app = express();
 
-var app = module.exports = express();
+export default app;
 
-app.use('/api/v1', require('./controllers/api_v1'));
-app.use('/api/v2', require('./controllers/api_v2'));
+app.use( '/api/v1', apiV1 );
+app.use( '/api/v2', apiV2 );
 
 app.get('/', function(req, res) {
   res.send('Hello from root route.')
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

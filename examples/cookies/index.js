@@ -1,13 +1,10 @@
-'use strict'
+import logger from 'morgan';
+import cookieParser from 'cookie-parser' ;
+import express from '../../index.cjs';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../../');
-var app = module.exports = express();
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+export default app;
 
 // custom log format
 if (process.env.NODE_ENV !== 'test') app.use(logger(':method :url'))
@@ -42,8 +39,8 @@ app.post('/', function(req, res){
   res.redirect('back');
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

@@ -1,12 +1,8 @@
-'use strict'
+import createError from 'http-errors'
+import express from '../../index.cjs';
+const app = express();
 
-/**
- * Module dependencies.
- */
-
-var createError = require('http-errors')
-var express = require('../../');
-var app = module.exports = express();
+export default app;
 
 // Faux database
 
@@ -66,8 +62,8 @@ app.get('/users/:from-:to', function (req, res) {
   res.send('users ' + names.slice(from, to + 1).join(', '));
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

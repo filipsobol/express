@@ -1,13 +1,9 @@
-'use strict'
+import cookieSession from 'cookie-session';
+import express from '../../index.cjs';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var cookieSession = require('cookie-session');
-var express = require('../../');
-
-var app = module.exports = express();
+export default app;
 
 // add req.session cookie support
 app.use(cookieSession({ secret: 'manny is cool' }));
@@ -18,8 +14,8 @@ app.get('/', function (req, res) {
   res.send('viewed ' + req.session.count + ' times\n')
 })
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ?????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

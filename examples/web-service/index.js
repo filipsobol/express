@@ -1,12 +1,8 @@
-'use strict'
+import express from '../../index.cjs';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../../');
-
-var app = module.exports = express();
+export default app;
 
 // create an error with .status. we
 // can then use the property in our
@@ -110,8 +106,8 @@ app.use(function(req, res){
   res.send({ error: "Sorry, can't find that" })
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

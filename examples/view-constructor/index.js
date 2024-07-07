@@ -1,14 +1,10 @@
-'use strict'
+import express from '../../index.cjs';
+import GithubView from './github-view';
+import md from 'marked'.parse;
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../../');
-var GithubView = require('./github-view');
-var md = require('marked').parse;
-
-var app = module.exports = express();
+export default app;
 
 // register .md as an engine in express view system
 app.engine('md', function(str, options, fn){
@@ -41,8 +37,8 @@ app.get('/Readme.md', function(req, res){
   res.render('Readme.md');
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

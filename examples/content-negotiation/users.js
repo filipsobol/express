@@ -1,19 +1,17 @@
-'use strict'
+import db from './db';
 
-var users = require('./db');
-
-exports.html = function(req, res){
-  res.send('<ul>' + users.map(function(user){
+export function html(req, res){
+  res.send('<ul>' + db.map(function(user){
     return '<li>' + user.name + '</li>';
   }).join('') + '</ul>');
 };
 
-exports.text = function(req, res){
-  res.send(users.map(function(user){
+export function text(req, res){
+  res.send(db.map(function(user){
     return ' - ' + user.name + '\n';
   }).join(''));
 };
 
-exports.json = function(req, res){
-  res.json(users);
+export function json(req, res){
+  res.json(db);
 };

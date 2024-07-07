@@ -1,16 +1,12 @@
-'use strict'
+import escapeHtml from 'escape-html';
+import express from '../../index.cjs';
+import fs from 'fs';
+import marked from 'marked';
+import path from 'path';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var escapeHtml = require('escape-html');
-var express = require('../..');
-var fs = require('fs');
-var marked = require('marked');
-var path = require('path');
-
-var app = module.exports = express();
+export default app;
 
 // register .md as an engine in express view system
 
@@ -37,8 +33,8 @@ app.get('/fail', function(req, res){
   res.render('missing', { title: 'Markdown Example' });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

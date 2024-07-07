@@ -1,15 +1,9 @@
-'use strict'
+import db from '../../db';
 
-/**
- * Module dependencies.
- */
+export const name = 'pet';
+export const prefix = '/user/:user_id';
 
-var db = require('../../db');
-
-exports.name = 'pet';
-exports.prefix = '/user/:user_id';
-
-exports.create = function(req, res, next){
+export function create(req, res, next){
   var id = req.params.user_id;
   var user = db.users[id];
   var body = req.body;

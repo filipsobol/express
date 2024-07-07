@@ -1,13 +1,9 @@
-'use strict'
+import express from '../../index.cjs';
+import path from 'path';
 
-/**
- * Module dependencies.
- */
+const app = express();
 
-var express = require('../../');
-var path = require('path');
-
-var app = module.exports = express();
+export default app;
 
 // Register ejs as .html. If we did
 // not call this, we would need to
@@ -50,8 +46,8 @@ app.get('/', function(req, res){
   });
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

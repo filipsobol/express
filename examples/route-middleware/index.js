@@ -1,10 +1,4 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var express = require('../../lib/express');
+import express from '../../lib/express';
 
 var app = express();
 
@@ -83,8 +77,8 @@ app.delete('/user/:id', loadUser, andRestrictTo('admin'), function(req, res){
   res.send('Deleted user ' + req.user.name);
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

@@ -1,6 +1,4 @@
-'use strict'
-
-var express = require('../../');
+import express from '../../index.cjs';
 
 var app = module.exports = express()
 
@@ -8,8 +6,8 @@ app.get('/', function(req, res){
   res.send('Hello World');
 });
 
-/* istanbul ignore next */
-if (!module.parent) {
-  app.listen(3000);
-  console.log('Express started on port 3000');
-}
+// TODO: ????
+// if (!module.parent) {
+//   app.listen(3000);
+//   console.log('Express started on port 3000');
+// }

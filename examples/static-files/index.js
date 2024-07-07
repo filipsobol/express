@@ -1,12 +1,6 @@
-'use strict'
-
-/**
- * Module dependencies.
- */
-
-var express = require('../..');
-var logger = require('morgan');
-var path = require('path');
+import express from '../../index.cjs';
+import logger from 'morgan';
+import path from 'path';
 var app = express();
 
 // log requests
